@@ -2,10 +2,11 @@ from langchain import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chat_models import ChatOpenAI
 import os
+from third_parties.linkedin import scrape_linkedin_profile
 
 if __name__ == "__main__":
     print("Hello World!")
-    print(os.environ(" OPENAI_API_KEY"))
+    print(os.environ["OPENAI_API_KEY"])
 
 information = """
 John Christopher Depp II (born June 9, 1963) is an American actor and musician. He is the recipient of multiple accolades, including a Golden Globe Award and a Screen Actors Guild Award, and has been nominated for three Academy Awards and two BAFTA awards.
@@ -20,7 +21,7 @@ Between 1998 and 2012, Depp was in a relationship with the French singer Vanessa
 """
 
 summary_template = """
-    Given the information {information} about the person from I want you to create:
+    Given the LinkedIn information {information} about the person from I want you to create:
     1. a short summary of the person
     2. two interesting facts about the person
 
@@ -36,4 +37,7 @@ llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
 # Notice how langchain makes the information variable available to the prompt
-print(chain.run(information=information))
+linkedin_data = scrape_linkedin_profile(
+    linkedin_profile_url="https://www.linkedin.com/in/pedro-moyano/"
+)
+print(chain.run(information=linkedin_data))

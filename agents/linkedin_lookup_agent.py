@@ -13,7 +13,7 @@ def lookup(name: str) -> str:
     tools_for_agent = [
         Tool(
             name="Crawl Google 4 linkedin profile page",
-            description="useful for when you need to get th Linkedin page URL",
+            description="useful for when you need to get the Linkedin page URL",
             func=get_profile_url,
         )
     ]

@@ -39,7 +39,6 @@ def lookup(name: str) -> str:
     )
 
     # Run Agent
-    linkedin_profile_url = agent.run(
-        prompt_template.format_prompt(name_of_person=name))
+    linkedin_profile_url = agent.run(prompt_template.format_prompt(name_of_person=name))
 
     return linkedin_profile_url

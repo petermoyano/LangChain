@@ -1,7 +1,8 @@
 from langchain.utilities import SerpAPIWrapper
 
 # This entire wrapper is meant to correct the "claning" process the SerpAPIWrapper does.
-# The llm is meant to find a URL, which it does, but fails to deliver as the response, and gets filtered in the "cleaning" process. So this wrapper is meant to correct that.
+# The llm is meant to find a URL, which it does, but fails to deliver as the response,
+# and gets filtered in the "cleaning" process. So this wrapper is meant to correct that.
 
 
 class CustomSerpAPIWrapper(SerpAPIWrapper):

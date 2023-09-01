@@ -15,11 +15,11 @@ def lookup(name: str) -> str:
     Your answer should contain only a URL.
     """
 
-    # Here we define the tools that the agent will use.
+    # Agent tools
     # If it the description matches the current task (in some way) the agent will use it.
     tools_for_agent = [
         Tool(
-            name="Crawl Google 4 linkedin profile page",
+            name="Crawl Google for linkedin profile page",
             func=get_profile_url,
             description="useful for when you need to get the Linkedin page URL",
         )
@@ -39,6 +39,7 @@ def lookup(name: str) -> str:
     )
 
     # Run Agent
-    linkedin_profile_url = agent.run(prompt_template.format_prompt(name_of_person=name))
+    linkedin_profile_url = agent.run(
+        prompt_template.format_prompt(name_of_person=name))
 
     return linkedin_profile_url
